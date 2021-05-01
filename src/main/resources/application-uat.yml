@@ -1,0 +1,51 @@
+environment: uat
+
+spring:
+  application:
+    name: Template
+  profiles:
+    active: uat
+  datasource:
+    jdbc-url: jdbc:postgresql://127.0.0.1/sbtemplate
+    username: root
+    password: root
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    minimumIdle: 3
+    maximumPoolSize: 8
+    poolName: TemplateHikariCP
+    idleTimeout: 300000
+    maxLifetime: 900000
+    connectionTestQuery: "SELECT 1"
+    autoCommit: true
+    connectionTimeout: 20000
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
+        order_inserts: true
+        order_updates: true
+server:
+  port:
+    8008
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+        type.descriptor.sql.BasicBinder: TRACE # For Bind parameters
+        stat: debug
+        engine:
+          jdbc:
+            batch:
+              internal:
+                BatchingBatch: DEBUG
+  config: classpath:log4j2-prod.xml

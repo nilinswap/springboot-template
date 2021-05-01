@@ -1,0 +1,54 @@
+environment: local
+
+spring:
+    application:
+        name: SBTemplate
+    profiles:
+        active: local
+    datasource:
+        jdbc-url: jdbc:postgresql://db/sbtemplate
+        username: sbtemplate
+        password: sbtemplate
+        platform: postgres
+        dirver-class-name: org.postgresql.Driver
+        minimumIdle: 2
+        maximumPoolSize: 5
+        poolName: SBTemplateHikariCP
+        idleTimeout: 300000
+        maxLifetime: 900000
+        connectionTestQuery: "SELECT 1"
+        autoCommit: true
+        connectionTimeout: 20000
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: none
+        generate-ddl: false
+        properties:
+            hibernate:
+                format_sql: true
+                generate_statistics: true
+                order_inserts: true
+                order_updates: true
+server:
+    port: 8008
+
+logging:
+    level:
+        org:
+            springframework: INFO
+            hibernate:
+                SQL: DEBUG
+                type: TRACE
+                type.descriptor.sql.BasicBinder: TRACE # For Bind parameters
+                stat: debug
+                engine:
+                    jdbc:
+                        batch:
+                            internal:
+                                BatchingBatch: DEBUG
+    config: classpath:log4j2-dev.xml
+
+secrets:
+    path:
+        file: secrets.json

@@ -1,0 +1,1 @@
+docker-compose run --rm migration python manage.py migrate

@@ -1,0 +1,48 @@
+environment: prod
+
+spring:
+  application:
+    name: Template
+  profiles:
+    active: prod
+  datasource:
+    jdbc-url: jdbc:postgresql://127.0.0.1/sbtemplate
+    username: root
+    password: root
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    minimumIdle: 5
+    maximumPoolSize: 10
+    poolName: Template
+    idleTimeout: 300000
+    maxLifetime: 900000
+    connectionTestQuery: "SELECT 1"
+    autoCommit: true
+    connectionTimeout: 20000
+  jpa:
+    database-platform:
+      org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: false
+        generate_statistics: false
+        order_inserts: true
+        order_updates: true
+server:
+  port:
+    8008
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: ERROR
+  config: classpath:log4j2-prod.xml
+
+secrets:
+  path:
+    file: /opt/secrets.json

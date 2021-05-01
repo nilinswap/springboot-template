@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <JSONLayout complete="false" compact="true" properties="true" eventEol="true">
+        <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ssZ}"/>
+<!--        <KeyValuePair key="request_id" value="$${ctx:request_id}"/>-->
+<!--        <KeyValuePair key="event_type" value="$${ctx:event_type}"/>-->
+<!--        <KeyValuePair key="event_subtype" value="$${ctx:event_subtype}"/>-->
+      </JSONLayout>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="Console" level="DEBUG"/>
+    </Root>
+  </Loggers>
+
+</Configuration>
