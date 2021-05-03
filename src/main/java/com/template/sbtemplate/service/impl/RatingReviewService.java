@@ -68,10 +68,9 @@ public class RatingReviewService implements IRatingReviewService {
     }
     public AddReviewResponseDto addReview(AddReviewRequestDto addReviewRequestDto){
         Review review = Review.builder()
-                .reviewerName("dummy")
-                .userId(addReviewRequestDto.getUserId())
+                .reviewerName(addReviewRequestDto.getReviewerName())
                 .rating(addReviewRequestDto.getRating())
-                .title("dummy title")
+                .title(addReviewRequestDto.getTitle())
                 .comment(addReviewRequestDto.getComment())
                 .build();
         reviewRepository.save(review);

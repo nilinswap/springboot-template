@@ -33,9 +33,6 @@ public class Review {
     @Column(name = "reviewer_name")
     public String reviewerName;
 
-    @Column(name = "user_id")
-    public String userId;
-
     @Column(name = "rating")
     public int rating;
 
@@ -45,16 +42,10 @@ public class Review {
     @Column(name = "comment")
     public String comment;
 
-    @Column(name = "is_approved")
-    public boolean isApproved;
-
 
     @Column(name = "created_on")
     @CreationTimestamp
     private LocalDateTime createdOn;
 
 
-    @Column(name = "updated_on")
-    @UpdateTimestamp
-    private LocalDateTime updatedOn;
 }

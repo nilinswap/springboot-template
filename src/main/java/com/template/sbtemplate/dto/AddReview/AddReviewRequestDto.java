@@ -9,7 +9,9 @@ import lombok.Data;
 @Builder
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class AddReviewRequestDto {
-  private String userId;
+  private String reviewerName;
+
+  private String title;
 
   private int rating;
 
