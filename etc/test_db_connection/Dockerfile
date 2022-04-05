@@ -34,5 +34,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["tail", "-f", "/dev/null"]
-# RUN python manage.py migrate
+CMD ["python", "check_db_connection.py"]
+# RUN python check_db_connection.py
